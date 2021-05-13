@@ -5,5 +5,5 @@ public class TicketSeller {
     public static boolean buyTicket(User user, Event event) {
         return false;
     }
-    
+
 }
