@@ -10,8 +10,8 @@ import java.util.logging.StreamHandler;
 import java.util.stream.Stream;
 
 public class User {
-    public String name;
-    public String surname;
+    private String name;
+    private String surname;
 
     private List<Ticket> tickets;
     private List<Event> favourites;
@@ -50,14 +50,32 @@ public class User {
         return user;
     }
 
-//    public void updateTicketExpiration() {
-//        final Date currentDate = new Date();
-//        tickets.removeIf((ticket -> {
-//            if (ticket.getEvent().getEndDate().before(currentDate)) {
-//                expiredTickets.add(ticket);
-//                return true;
-//            }
-//            return false;
-//        }));
-//    }
+    public void addTicket(Ticket ticket) {
+        tickets.add(ticket);
+    }
+
+    public void addEventToFavourite(Event event) {
+        if (!favourites.contains(event))
+            favourites.add(event);
+    }
+
+    public boolean isEventIsFavourite(Event event) {
+        return favourites.contains(event);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public List<Event> getFavourites() {
+        return favourites;
+    }
 }

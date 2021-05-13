@@ -2,6 +2,8 @@ package com.example.hackathon;
 
 import android.graphics.Bitmap;
 
+import androidx.annotation.Nullable;
+
 import java.util.Date;
 
 public class Event {
@@ -28,6 +30,13 @@ public class Event {
         this.cost = cost;
         this.seats = seats;
         this.seatsLeft = seats;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        return name.equals(((Event) obj).name);
     }
 
     public String getDate() {
