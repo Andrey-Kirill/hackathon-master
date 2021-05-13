@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.transition.Transition;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -67,7 +66,7 @@ public class Auth extends AppCompatActivity {
     public void sign_in(View v){
         if(login.getText().toString().isEmpty() == false && password.getText().toString().isEmpty() == false){
             User.setUser(login.getText().toString(), password.getText().toString());
-            Firebase.autentificate(new User(login.getText().toString(), password.getText().toString()),id);
+            Firebase.authenticate(new User(login.getText().toString(), password.getText().toString()),id);
             Intent i = new Intent(Auth.this,MainActivity.class);
             startActivity(i);
         }else{
