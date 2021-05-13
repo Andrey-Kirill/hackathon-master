@@ -14,25 +14,50 @@ public class User {
     public String surname;
 
     private List<Ticket> tickets;
-    private List<Ticket> expiredTickets;
+    private List<Event> favourites;
 
-    public User(String name,String surname){
+    private static User user;
+
+    public User() {
+
+    }
+
+    public User(String name,String surname) {
         this.name = name;
         this.surname = surname;
     }
 
-    public User(){
-
+    public static void setUser(String name, String surname) {
+        user = new User(name, surname);
     }
 
-    public void updateTicketExpiration() {
-        final Date currentDate = new Date();
-        tickets.removeIf((ticket -> {
-            if (ticket.getEvent().getEndDate().before(currentDate)) {
-                expiredTickets.add(ticket);
-                return true;
-            }
-            return false;
-        }));
+    public User(String name, String surname, List<Ticket> tickets, List<Event> favourites) {
+        this.name = name;
+        this.surname = surname;
+        this.tickets = tickets;
+        this.favourites = favourites;
     }
+
+    public static void setUser(String name, String surname, List<Ticket> tickets, List<Event> favourites) {
+        user = new User(name, surname, tickets, favourites);
+    }
+
+    public static void setUser(User user) {
+        User.user = user;
+    }
+
+    public static User getCurrentUser() {
+        return user;
+    }
+
+//    public void updateTicketExpiration() {
+//        final Date currentDate = new Date();
+//        tickets.removeIf((ticket -> {
+//            if (ticket.getEvent().getEndDate().before(currentDate)) {
+//                expiredTickets.add(ticket);
+//                return true;
+//            }
+//            return false;
+//        }));
+//    }
 }

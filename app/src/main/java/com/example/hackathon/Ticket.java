@@ -7,6 +7,11 @@ public class Ticket {
     private Event event;
     private Date buyDate;
 
+    public boolean isExpired() {
+        Date currentDate = new Date();
+        return buyDate.before(currentDate);
+    }
+
     public Event getEvent() {
         return event;
     }
@@ -14,4 +19,6 @@ public class Ticket {
     public Date getBuyDate() {
         return buyDate;
     }
+
+
 }
