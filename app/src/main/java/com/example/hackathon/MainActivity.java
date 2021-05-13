@@ -67,8 +67,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.nav_gallery){
-            Toast.makeText(getApplicationContext(),"Gallery",Toast.LENGTH_SHORT).show();
+        Intent intent;
+        switch (id){
+            case(R.id.nav_events):intent = new Intent(this, MainActivity2.class);
+            startActivity(intent);
+            break;
+            case(R.id.nav_gallery):Toast.makeText(this, "Gallery", Toast.LENGTH_SHORT).show();break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return false;
