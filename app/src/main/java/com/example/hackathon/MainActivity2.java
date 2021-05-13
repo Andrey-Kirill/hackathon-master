@@ -11,16 +11,19 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity2 extends AppCompatActivity {
+public class MainActivity2 extends NavigationViewActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        initNavigationView();
         ListView listView = (ListView) findViewById(R.id.listview);
         ArrayList<Event> list = new ArrayList<>(0);
         list.add(new Event("Приключения Гуливера", "приключение", R.drawable.down, new Date(), new Date(), 100, 50));
@@ -33,5 +36,7 @@ public class MainActivity2 extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Ты Негр №"+position, Toast.LENGTH_SHORT).show();
             }
         });
+
+        initNavigationView();
     }
 }

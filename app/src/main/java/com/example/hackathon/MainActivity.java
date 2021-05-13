@@ -22,8 +22,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    DrawerLayout drawer;
+public class MainActivity extends NavigationViewActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,42 +38,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .setAction("Action", null).show();
             }
         });
-        drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        navigationView.setNavigationItemSelectedListener(this);
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id = item.getItemId();
-        if(id == R.id.action_settings){
-            Toast.makeText(getApplicationContext(),"Settings",Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(MainActivity.this,MapActivity.class);
-            startActivity(i);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        Intent intent;
-        switch (id){
-            case(R.id.nav_events):intent = new Intent(this, MainActivity2.class);
-            startActivity(intent);
-            break;
-            case(R.id.nav_gallery):Toast.makeText(this, "Gallery", Toast.LENGTH_SHORT).show();break;
-        }
-        drawer.closeDrawer(GravityCompat.START);
-        return false;
+        initNavigationView();
     }
 }
