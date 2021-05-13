@@ -1,15 +1,63 @@
 package com.example.hackathon;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.util.Date;
 import java.util.List;
+import java.util.logging.StreamHandler;
+import java.util.stream.Stream;
 
 public class User {
     public String name;
     public String surname;
-    List<Ticket> tickets;
 
-    public User(String name,String surname){
+    private List<Ticket> tickets;
+    private List<Event> favourites;
+
+    private static User user;
+
+    public User() {
+
+    }
+
+    public User(String name,String surname) {
         this.name = name;
         this.surname = surname;
     }
-    public User(){}
+
+    public static void setUser(String name, String surname) {
+        user = new User(name, surname);
+    }
+
+    public User(String name, String surname, List<Ticket> tickets, List<Event> favourites) {
+        this.name = name;
+        this.surname = surname;
+        this.tickets = tickets;
+        this.favourites = favourites;
+    }
+
+    public static void setUser(String name, String surname, List<Ticket> tickets, List<Event> favourites) {
+        user = new User(name, surname, tickets, favourites);
+    }
+
+    public static void setUser(User user) {
+        User.user = user;
+    }
+
+    public static User getCurrentUser() {
+        return user;
+    }
+
+//    public void updateTicketExpiration() {
+//        final Date currentDate = new Date();
+//        tickets.removeIf((ticket -> {
+//            if (ticket.getEvent().getEndDate().before(currentDate)) {
+//                expiredTickets.add(ticket);
+//                return true;
+//            }
+//            return false;
+//        }));
+//    }
 }

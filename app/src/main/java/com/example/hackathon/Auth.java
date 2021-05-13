@@ -66,7 +66,8 @@ public class Auth extends AppCompatActivity {
     }
     public void sign_in(View v){
         if(login.getText().toString().isEmpty() == false && password.getText().toString().isEmpty() == false){
-            Firebase.autentificate(new User(login.getText().toString(),password.getText().toString()),id);
+            User.setUser(login.getText().toString(), password.getText().toString());
+            Firebase.autentificate(new User(login.getText().toString(), password.getText().toString()),id);
             Intent i = new Intent(Auth.this,MainActivity.class);
             startActivity(i);
         }else{
