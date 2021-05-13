@@ -2,11 +2,10 @@ package com.example.hackathon;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -15,12 +14,13 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
@@ -44,18 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         navigationView.setNavigationItemSelectedListener(this);
-        ListView listView = (ListView) findViewById(R.id.listview);
-        ArrayList<Event> list = new ArrayList<>(0);
-        list.add(new Event("Приключения Гуливера", "приключение", null, new Date(), new Date(), 100, 50));
-//        list.add(new Event(, "Приключения Гуливера", R.drawable.down));
-        Adapter adapter = new Adapter(this, R.layout.eventlayout, list);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "Ты Негр №"+position, Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
 
     @Override
@@ -80,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         Intent intent;
         switch (id){
-            case(R.id.nav_events):intent = new Intent(this, Afisha.class);
+            case(R.id.nav_events):intent = new Intent(this, MainActivity2.class);
             startActivity(intent);
             break;
             case(R.id.nav_gallery):Toast.makeText(this, "Gallery", Toast.LENGTH_SHORT).show();break;

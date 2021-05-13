@@ -6,6 +6,6 @@
     <group android:checkableBehavior="single">
         <item android:id="@+id/nav_events"
             android:icon="@drawable/ic_menu_send"
-            android:title="Ближайшие Театральные постановки"/>
+            android:title="@string/Afisha"/>
     </group>
 </menu>
