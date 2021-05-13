@@ -1,6 +1,9 @@
 package com.example.hackathon;
 
+import androidx.annotation.Nullable;
+
 import java.util.Date;
+import java.util.UUID;
 
 public class Ticket {
 

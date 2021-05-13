@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity2 extends AppCompatActivity {
+public class Afisha extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         ListView listView = (ListView) findViewById(R.id.listview);
         ArrayList<Event> list = new ArrayList<>(0);
-        list.add(new Event("Приключения Гуливера", "приключение", R.drawable.down, new Date(), new Date(), 100, 50));
+        list.add(new Event("Приключения Гуливера", "приключение", null, new Date(), new Date(), 100, 50));
 //        list.add(new Event(, "Приключения Гуливера", R.drawable.down));
         Adapter adapter = new Adapter(this, R.layout.eventlayout, list);
         listView.setAdapter(adapter);

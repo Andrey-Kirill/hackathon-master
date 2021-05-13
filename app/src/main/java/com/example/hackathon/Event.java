@@ -1,5 +1,7 @@
 package com.example.hackathon;
 
+import android.graphics.Bitmap;
+
 import androidx.annotation.Nullable;
 
 import java.util.Date;
@@ -8,7 +10,7 @@ public class Event {
 
     private String name;
     private String description;
-    private int photo;
+    private Bitmap photo;
 
     private Date startDate;
     private Date endDate;
@@ -17,7 +19,7 @@ public class Event {
     private int seatsLeft;
     private int seats;
 
-    public Event(String name, String description, int photo, Date startDate, Date endDate, int cost, int seats) {
+    public Event(String name, String description, Bitmap photo, Date startDate, Date endDate, int cost, int seats) {
         this.name = name;
         this.description = description;
         this.photo = photo;
@@ -48,7 +50,7 @@ public class Event {
         return description;
     }
 
-    public int getPhoto() {
+    public Bitmap getPhoto() {
         return photo;
     }
 

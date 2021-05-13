@@ -1,5 +1,6 @@
-package com.example.forschool;
+package com.example.hackathon;
 
+import android.graphics.Bitmap;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -31,7 +32,7 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.TicketsV
     @NonNull
     @Override
     public TicketsAdapter.TicketsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.olympiad_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ticket_item, parent, false);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,29 +57,26 @@ public class TicketsAdapter extends RecyclerView.Adapter<TicketsAdapter.TicketsV
 
     static final class TicketsViewHolder extends RecyclerView.ViewHolder{
 
-        private final TextView nameTextView;
-        private final TextView organizerTextView;
-        private final TextView subjectTextView;
-        private final TextView levelTextView;
-        private final ImageView img;
+        private final TextView name;
+        private final TextView price;
+        private final TextView date;
+        private final ImageView photo;
 
         public TicketsViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameTextView = itemView.findViewById(R.id.name);
-            organizerTextView = itemView.findViewById(R.id.organizer);
-            subjectTextView = itemView.findViewById(R.id.subject);
-            levelTextView = itemView.findViewById(R.id.level);
-            img  = itemView.findViewById(R.id.imageView5);
+            name = itemView.findViewById(R.id.name);
+            price = itemView.findViewById(R.id.price);
+            date = itemView.findViewById(R.id.date);
+            photo = itemView.findViewById(R.id.photo);
 
             //itemView.setOnCreateContextMenuListener(this);
         }
 
         public void bind(Ticket ticket) {
-            nameTextView.setText(.getShortName());
-            organizerTextView.setText(olympiad.getOrganizer());
-            subjectTextView.setText(olympiad.getSubject());
-            levelTextView.setText(olympiad.getLevel());
-            img.setImageBitmap(olympiad.getBitmap());
+            name.setText(ticket.getEvent().getName());
+            price.setText(ticket.getEvent().getCost());
+            date.setText(ticket.getEvent().getStartDate().toString());
+            photo.setImageBitmap(ticket.getEvent().getPhoto());
         }
         /*
         @Override

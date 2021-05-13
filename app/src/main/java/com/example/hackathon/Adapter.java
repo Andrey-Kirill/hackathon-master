@@ -36,7 +36,7 @@ public class Adapter extends ArrayAdapter<Event> {
         }
         Event state = states.get(position);
 
-        viewHolder.imageView.setImageResource(state.getPhoto());
+        viewHolder.imageView.setImageBitmap(state.getPhoto());
         viewHolder.nameView.setText(state.getName());
         viewHolder.capitalView.setText(state.getDate().toString());
 
