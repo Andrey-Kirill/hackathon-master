@@ -1,5 +1,6 @@
 package com.example.hackathon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -23,7 +24,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if(id == R.id.action_settings){
             Toast.makeText(getApplicationContext(),"Settings",Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(MainActivity.this,MapActivity.class);
+            startActivity(i);
         }
         return super.onOptionsItemSelected(item);
     }
